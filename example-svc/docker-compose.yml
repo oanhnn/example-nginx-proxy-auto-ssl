@@ -1,0 +1,32 @@
+version: "3"
+
+### Networks ###
+networks:
+  default:
+    external:
+      name: nginx-proxy
+
+### Services ###
+services: 
+
+  ### Web service ###
+  webapp:
+    image: nginx:alpine
+    depends_on: 
+      - phpapp
+    environment: 
+      VIRTUAL_HOST:  example.com
+      LETSENCRYPT_HOST: example.com
+      LETSENCRYPT_EMAIL: oanhnn.bk@gmail.com
+    restart: unless-stopped
+    volumes:
+      - .:/var/www/html
+      - ./vhost.conf:/etc/nginx/conf.d/default.conf
+
+  ### App service ###
+  phpapp:
+    image: php:7.3-fpm-alpine
+    restart: unless-stopped
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
