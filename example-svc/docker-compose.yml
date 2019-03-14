@@ -7,17 +7,17 @@ networks:
       name: nginx-proxy
 
 ### Services ###
-services: 
+services:
 
   ### Web service ###
   webapp:
     image: nginx:alpine
-    depends_on: 
+    depends_on:
       - phpapp
-    environment: 
-      VIRTUAL_HOST:  example.com
-      LETSENCRYPT_HOST: example.com
-      LETSENCRYPT_EMAIL: oanhnn.bk@gmail.com
+    environment:
+      VIRTUAL_HOST:      example.com
+      LETSENCRYPT_HOST:  example.com
+      LETSENCRYPT_EMAIL: service@example.com
     restart: unless-stopped
     volumes:
       - .:/var/www/html

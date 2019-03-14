@@ -7,7 +7,7 @@ networks:
       name: nginx-proxy
 
 ### Volumes ###
-volumes: 
+volumes:
   conf:
   html:
   vhost:
@@ -15,16 +15,16 @@ volumes:
   dhparam:
 
 ### Services ###
-services: 
-  
+services:
+
   ### NGINX Proxy ###
   nginx-proxy:
     image: jwilder/nginx-proxy:alpine
     labels:
-      - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
+      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
     ports:
-      - "80:80"
-      - "443:443"
+      - 80:80
+      - 443:443
     restart: unless-stopped
     volumes:
       - conf:/etc/nginx/conf.d
@@ -37,7 +37,7 @@ services:
   ### Auto SSL ###
   nginx-proxy-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
-    depends_on: 
+    depends_on:
       - nginx-proxy
     restart: unless-stopped
     volumes:
