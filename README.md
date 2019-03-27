@@ -13,11 +13,6 @@ An example for setting auto proxy and auto setup SSL with NGINX
 
 ## Usage
 
-- Create the required `nginx-proxy` docker network with:
-  
-  ```bash
-  $ docker network create nginx-proxy
-  ```
 - Launch the `nginx-proxy` stack in detached mode with:
   
   ```bash

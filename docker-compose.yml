@@ -1,10 +1,10 @@
-version: "3"
+version: "3.7"
 
 ### Networks ###
 networks:
   default:
-    external:
-      name: nginx-proxy
+    driver: bridge
+    name:   nginx-proxy
 
 ### Volumes ###
 volumes:
@@ -22,6 +22,8 @@ services:
     image: jwilder/nginx-proxy:alpine
     labels:
       - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
+    networks:
+      - default
     ports:
       - 80:80
       - 443:443
@@ -39,6 +41,8 @@ services:
     image: jrcs/letsencrypt-nginx-proxy-companion
     depends_on:
       - nginx-proxy
+    networks:
+      - default
     restart: unless-stopped
     volumes:
       - conf:/etc/nginx/conf.d
