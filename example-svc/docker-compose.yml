@@ -1,10 +1,10 @@
-version: "3.7"
+version: "3.5"
 
 ### Networks ###
 networks:
   default:
-    external:
-      name: nginx-proxy
+    external: true
+    name:     nginx-proxy
 
 ### Services ###
 services:

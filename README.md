@@ -11,6 +11,11 @@ An example for setting auto proxy and auto setup SSL with NGINX
 - https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion
 - https://github.com/buchdag/letsencrypt-nginx-proxy-companion-compose
 
+## Requirements
+
+- Docker Engine 17.12.0+
+- Docker Compose 1.18.0+
+
 ## Usage
 
 - Launch the `nginx-proxy` stack in detached mode with:

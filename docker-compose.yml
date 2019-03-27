@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.5"
 
 ### Networks ###
 networks:
@@ -8,11 +8,11 @@ networks:
 
 ### Volumes ###
 volumes:
-  conf:
-  html:
-  vhost:
-  certs:
-  dhparam:
+  conf:    {}
+  html:    {}
+  vhost:   {}
+  certs:   {}
+  dhparam: {}
 
 ### Services ###
 services:
