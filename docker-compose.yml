@@ -2,9 +2,9 @@ version: "3.5"
 
 ### Networks ###
 networks:
-  default:
-    driver: bridge
-    name:   nginx-proxy
+  pub-network: {}
+  pri-network:
+    name: reverse-proxy
 
 ### Volumes ###
 volumes:
@@ -23,7 +23,8 @@ services:
     labels:
       - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
     networks:
-      - default
+      - pub-network
+      - pri-network
     ports:
       - 80:80
       - 443:443
@@ -41,8 +42,6 @@ services:
     image: jrcs/letsencrypt-nginx-proxy-companion
     depends_on:
       - nginx-proxy
-    networks:
-      - default
     restart: unless-stopped
     volumes:
       - conf:/etc/nginx/conf.d

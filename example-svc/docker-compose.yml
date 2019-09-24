@@ -2,9 +2,10 @@ version: "3.5"
 
 ### Networks ###
 networks:
-  default:
+  app-network: {}
+  pri-network:
     external: true
-    name:     nginx-proxy
+    name: reverse-proxy
 
 ### Services ###
 services:
@@ -19,7 +20,8 @@ services:
       LETSENCRYPT_HOST:  example.com
       LETSENCRYPT_EMAIL: service@example.com
     networks:
-      - default
+      - app-network
+      - pri-network
     restart: unless-stopped
     volumes:
       - .:/var/www/html
@@ -29,7 +31,7 @@ services:
   phpapp:
     image: php:7.3-fpm-alpine
     networks:
-      - default
+      - app-network
     restart: unless-stopped
     volumes:
       - .:/var/www/html
