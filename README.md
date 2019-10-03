@@ -24,7 +24,7 @@ An example for setting auto proxy and auto setup SSL with NGINX
   $ docker-compose up -d
   ```
 
-- Create service in `nginx-proxy` docker network like example service
+- Create service in `reverse-proxy` docker network like example service
   
   ```bash
   $ cd example-svc

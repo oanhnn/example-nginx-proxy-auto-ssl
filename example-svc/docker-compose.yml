@@ -1,16 +1,13 @@
 version: "3.5"
 
-### Networks ###
 networks:
-  app-network: {}
-  pri-network:
+  app-net: {}
+  proxy-net:
     external: true
     name: reverse-proxy
 
-### Services ###
 services:
 
-  ### Web service ###
   webapp:
     image: nginx:alpine
     depends_on:
@@ -20,8 +17,8 @@ services:
       LETSENCRYPT_HOST:  example.com
       LETSENCRYPT_EMAIL: service@example.com
     networks:
-      - app-network
-      - pri-network
+      - app-net
+      - proxy-net
     restart: unless-stopped
     volumes:
       - .:/var/www/html
@@ -31,7 +28,7 @@ services:
   phpapp:
     image: php:7.3-fpm-alpine
     networks:
-      - app-network
+      - app-net
     restart: unless-stopped
     volumes:
       - .:/var/www/html

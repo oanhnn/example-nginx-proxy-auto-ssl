@@ -1,12 +1,9 @@
 version: "3.5"
 
-### Networks ###
 networks:
-  pub-network: {}
-  pri-network:
+  proxy-net:
     name: reverse-proxy
 
-### Volumes ###
 volumes:
   conf:    {}
   html:    {}
@@ -14,17 +11,14 @@ volumes:
   certs:   {}
   dhparam: {}
 
-### Services ###
 services:
 
-  ### NGINX Proxy ###
   nginx-proxy:
     image: jwilder/nginx-proxy:alpine
     labels:
       - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
     networks:
-      - pub-network
-      - pri-network
+      - proxy-net
     ports:
       - 80:80
       - 443:443
@@ -37,7 +31,6 @@ services:
       - certs:/etc/nginx/certs:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
-  ### Auto SSL ###
   nginx-proxy-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
     depends_on:
