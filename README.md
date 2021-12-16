@@ -2,19 +2,23 @@
 
 An example for setting auto proxy and auto setup SSL with NGINX
 
-- [x] Using `jwilder/nginx-proxy:alpine` to auto proxy
-- [x] Using `jrcs/letsencrypt-nginx-proxy-companion` to auto get SSL
+- [x] Using `nginxproxy/nginx-proxy:alpine` to auto proxy
+- [x] Using `nginxproxy/acme-companion` to auto get SSL
+
+<p align="center">
+   <img src="https://github.com/evertramos/images/raw/master/webproxy.jpg" />
+</p>
 
 ## Refs
 
-- https://github.com/jwilder/nginx-proxy
-- https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion
-- https://github.com/buchdag/letsencrypt-nginx-proxy-companion-compose
+- https://github.com/nginx-proxy/nginx-proxy
+- https://github.com/nginx-proxy/acme-companion
+- http://jasonwilder.com/blog/2014/03/25/automated-nginx-reverse-proxy-for-docker/
 
 ## Requirements
 
-- Docker Engine 17.12.0+
-- Docker Compose 1.18.0+
+- Docker Engine 19.03.0+
+- Docker Compose 1.27.0+
 
 ## Usage
 
