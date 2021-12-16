@@ -29,7 +29,7 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
   acme-companion:
-    image: nginxproxy/acme-companion;latest
+    image: nginxproxy/acme-companion:latest
     restart: unless-stopped
     volumes:
       - conf:/etc/nginx/conf.d
