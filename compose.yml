@@ -13,7 +13,8 @@ volumes:
 services:
 
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:alpine
+    image: ghcr.io/nginxproxy/nginx-proxy:alpine
+    container_name: nginx-proxy
     networks:
       - proxy-net
     ports:
@@ -22,20 +23,18 @@ services:
     restart: unless-stopped
     volumes:
       - conf:/etc/nginx/conf.d
+      - dhparam:/etc/nginx/dhparam
+      - certs:/etc/nginx/certs
       - vhost:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
-      - dhparam:/etc/nginx/dhparam
-      - certs:/etc/nginx/certs:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
   acme-companion:
-    image: nginxproxy/acme-companion;latest
+    image: ghcr.io/nginxproxy/acme-companion:2.2
+    container_name: nginx-proxy-acme
     restart: unless-stopped
+    volumes_from:
+      - nginx-proxy
     volumes:
-      - conf:/etc/nginx/conf.d
-      - vhost:/etc/nginx/vhost.d
-      - html:/usr/share/nginx/html
-      - dhparam:/etc/nginx/dhparam
-      - certs:/etc/nginx/certs:rw
       - acme:/etc/acme.sh
       - /var/run/docker.sock:/var/run/docker.sock:ro

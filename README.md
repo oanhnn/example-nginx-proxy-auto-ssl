@@ -18,21 +18,21 @@ An example for setting auto proxy and auto setup SSL with NGINX
 ## Requirements
 
 - Docker Engine 19.03.0+
-- Docker Compose 1.27.0+
+- Docker Compose 1.27.0+ (Docker Compose Plugin)
 
 ## Usage
 
 - Launch the `nginx-proxy` stack in detached mode with:
   
   ```bash
-  $ docker-compose up -d
+  $ docker compose up -d
   ```
 
-- Create service in `reverse-proxy` docker network like example service
+- Create a service in `reverse-proxy` docker network like example service
   
   ```bash
   $ cd example-svc
-  $ docker-compose up -d
+  $ docker compose up -d
   ```
 
 - Now your service was lauch and proxy with SSL.
@@ -49,5 +49,5 @@ If you would like to help take a look at the [list of issues](https://github.com
 ## License
 
 This project is released under the MIT License.   
-Copyright © 2019 [Oanh Nguyen](https://github.com/oanhnn)   
+Copyright © 2022 [Oanh Nguyen](https://github.com/oanhnn)   
 Please see [License File](https://github.com/oanhnn/example-nginx-proxy-auto-ssl/blob/master/LICENSE) for more information.
