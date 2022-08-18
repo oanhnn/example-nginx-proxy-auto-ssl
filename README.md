@@ -2,8 +2,8 @@
 
 An example for setting auto proxy and auto setup SSL with NGINX
 
-- [x] Using `nginxproxy/nginx-proxy:alpine` to auto proxy
-- [x] Using `nginxproxy/acme-companion` to auto get SSL
+- [x] Using `ghcr.io/nginx-proxy/nginx-proxy:alpine` to auto proxy
+- [x] Using `ghcr.io/nginx-proxy/acme-companion` to auto get SSL
 
 <p align="center">
    <img src="https://github.com/evertramos/images/raw/master/webproxy.jpg" />

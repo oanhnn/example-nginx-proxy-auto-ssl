@@ -13,7 +13,7 @@ volumes:
 services:
 
   nginx-proxy:
-    image: ghcr.io/nginxproxy/nginx-proxy:alpine
+    image: ghcr.io/nginx-proxy/nginx-proxy:alpine
     container_name: nginx-proxy
     networks:
       - proxy-net
@@ -30,7 +30,7 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
   acme-companion:
-    image: ghcr.io/nginxproxy/acme-companion:2.2
+    image: ghcr.io/nginx-proxy/acme-companion:2.2
     container_name: nginx-proxy-acme
     environment:
       - ACME_CA_URI=https://acme-v02.api.letsencrypt.org/directory
